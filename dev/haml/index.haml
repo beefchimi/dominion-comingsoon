@@ -1,0 +1,55 @@
+!!!
+/[if IE 9] <html class="ie9" lang="en">
+<!--[if gt IE 9]><!-->
+%html{:lang => "en"}<>
+	<!--<![endif]-->
+
+	= Haml::Engine.new(File.read("dev/haml/partials/_doc_head.haml")).render
+
+	%body
+
+		%main{:role => "main"}
+
+			%section
+
+				%article{"data-container" => "width_680"}
+
+					.wrap_logo.wrap_svg
+						%svg.logo_domcity{:viewBox => "0 0 64 64"}
+							%use{"xlink:href" => "#logo_domcity"}
+
+					%h1.visuallyhidden Dominion Day
+					%h2.visuallyhidden July 1, 2015
+					%p.visuallyhidden Check back soon for more details or sign up below and be the first to know when tickets are on sale.
+
+					.wrap_main.wrap_svg
+						%svg.txt_main.svg_inline{:viewBox => "0 0 679 176"}
+							%use{"xlink:href" => "#txt_main"}
+
+					%aside#mc_embed_signup{"data-container" => "width_386"}
+
+						%form#mc-embedded-subscribe-form.validate{:action => "//dominioncity.us7.list-manage.com/subscribe/post-json?u=606d7d0b567f59c868c9f077a&amp;id=442e480698&c=?", :method => "get", :name => "mc-embedded-subscribe-form", :novalidate => true}
+
+							%input#mce-NAME.mce-name{:type => "text", :name => "NAME", :value => "", :placeholder => "Name", :tabindex => "1"}
+							%input#mce-EMAIL.mce-email{:type => "email", :name => "EMAIL", :value => "", :placeholder => "Email", :required => true, :tabindex => "2"}
+
+							#do-not-remove.visuallyhidden
+								%input{:type => "text", :name => "b_606d7d0b567f59c868c9f077a_442e480698", :value => "", :tabindex => "-1"}
+
+							%button#mc-embedded-subscribe.button{:type => "submit", :value => "Submit", :name => "subscribe", :tabindex => "3"}
+								%svg.txt_submit{:viewBox => "0 0 61 12"}
+									%use{"xlink:href" => "#txt_submit"}
+
+							%aside#overlay{"data-overlay" => "inactive"}
+								#overlay_modal.overlay_modal
+									.wrap_response
+										%h3#mce-response-text
+										%a#close{:href => "#", :title => "Close Window"} Close
+
+					%h4.visuallyhidden www.dominioncity.ca
+
+					%a.wrap_svg{:href => "http://dominioncity.ca/", :title => "Visit Dominion city .ca"}
+						%svg.txt_link{:viewBox => "0 0 176 19"}
+							%use{"xlink:href" => "#txt_link"}
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_doc_scripts.haml")).render

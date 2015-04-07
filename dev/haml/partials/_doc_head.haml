@@ -1,0 +1,20 @@
+%head
+
+	%meta{:charset => "utf-8"}
+	%meta{"http-equiv" => "X-UA-Compatible", :content => "IE=edge"}
+
+	%title Dominion Day | July 1 2015
+
+	%meta{:name => "description", :content => "Check back soon for more details."}
+	%meta{:name => "viewport", :content => "width=device-width, initial-scale=1"}
+
+	-# !!! REMOVE FOR LIVE !!!
+	%meta{:name => "robots", :content => "noindex, nofollow"}
+
+	%meta{:name => "apple-mobile-web-app-capable", :content => "yes"}
+	%meta{:name => "apple-mobile-web-app-status-bar-style", :content => "black"}
+
+	%link{:rel => "stylesheet", :type => "text/css", :href => "assets/css/styles.css?v=1"}
+
+	%script
+		= Haml::Engine.new(File.read("dev/haml/partials/_js_svg.haml")).render

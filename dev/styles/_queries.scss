@@ -1,0 +1,18 @@
+// ==|== media queries ========================================================
+// ============================================================================
+
+@media only screen and (min-width: 768px) {
+
+	main {
+		padding: 8rem 3.2rem;
+	}
+	div.wrap_logo {
+		margin-bottom: 6rem;
+		width: 19.6rem;
+		height: 19.6rem;
+	}
+	div.wrap_main {
+		margin-bottom: 6rem;
+	}
+
+}

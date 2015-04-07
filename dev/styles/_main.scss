@@ -1,0 +1,266 @@
+// ==|== primary styles =======================================================
+// ============================================================================
+
+// Foundation
+// ----------------------------------------------------------------------------
+html,
+button,
+input {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 700;
+	color: $hsl_ash;
+}
+html {
+	min-height: 100%;
+}
+body {
+	position: relative;
+	text-align: center;
+	background-color: $hsl_L20;
+	background-image: url('../img/bg_map.jpg');
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+::selection {
+	color: $hsl_blue;
+	background-color: $hsl_ash;
+}
+::-webkit-input-placeholder {
+	color: $hsl_ash;
+	opacity: 0.8;
+}
+::-moz-placeholder {
+	color: $hsl_ash;
+	opacity: 0.8;
+}
+:-ms-input-placeholder {
+	color: $hsl_ash;
+	opacity: 0.8;
+}
+
+// Transitions
+// ----------------------------------------------------------------------------
+a,
+input,
+button,{
+	transition: all 0.3s ease-in-out;
+}
+svg {
+	transition: fill 0.3s ease-in-out;
+}
+// --- Animations --- \\
+@keyframes animShow {
+	0%   { opacity: 0; }
+	100% { opacity: 1; }
+}
+@keyframes animHide {
+	0%   { opacity: 1; left: 0; }
+	99%  { opacity: 0; left: 0; }
+	100% { opacity: 0; left: -200%; }
+}
+
+// Forms
+// ----------------------------------------------------------------------------
+aside {
+	margin-bottom: 6rem;
+}
+input[type="text"],
+input[type="email"] {
+	margin-bottom: 2rem;
+	padding-left: 1.6rem;
+	padding-right: 1.6rem;
+	width: 100%;
+	height: 4.8rem;
+	font-size: 1.6rem;
+	letter-spacing: 0.2rem;
+	text-transform: uppercase;
+	border: 0.2rem solid $hsl_ash;
+	-webkit-appearance: none; // prevent iOS inset shadow
+	   -moz-appearance: none; // prevent iOS inset shadow
+			appearance: none; // prevent iOS inset shadow
+	box-shadow: none; // prevent iOS inset shadow
+}
+input[type="text"]:focus,
+input[type="email"]:focus {
+	border-color: $hsl_blue;
+}
+// --- Submit Button --- \\
+button {
+	display: block;
+	margin: 0 auto;
+	width: 12rem;
+	height: 4.8rem;
+	text-align: center;
+	background-color: $hsl_blue;
+}
+button svg {
+	margin: auto;
+	width: 6.1rem;
+	height: 1.2rem;
+	fill: $hsl_ash;
+}
+button:hover {
+	background-color: $hsl_red;
+}
+button:active {
+	background-color: lighten($hsl_red, 10%);
+}
+
+
+
+form input.error {
+	border-color: $hsl_red;
+}
+
+// + mailchimp response + \\
+.wrap_response {
+	position: relative;
+	z-index: 902;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.wrap_response h3 {
+	margin-bottom: 3.2rem;
+	font-size: 1.8rem;
+	line-height: 1.4;
+}
+.wrap_response a {
+	display: inline-block;
+	padding: 1rem 3.2rem;
+	font-size: 1.4rem;
+	font-weight: 700;
+	letter-spacing: 0.1rem;
+	text-transform: uppercase;
+	color: $hsl_L100;
+	background-color: $hsl_blue;
+	border-radius: 0.6rem;
+}
+.wrap_response a:hover {
+	background-color: $hsl_L0;
+}
+.wrap_response a:active {
+	background-color: $hsl_L100;
+}
+
+
+
+// General Styles
+// ----------------------------------------------------------------------------
+// --- Containers --- \\
+[data-container] {
+	margin-left: auto;
+	margin-right: auto;
+}
+[data-container="width_680"] {
+	max-width: 68rem;
+}
+[data-container="width_386"] {
+	max-width: 38.6rem;
+}
+// --- SVGs --- \\
+#svgInject {
+	display: none;
+	visibility: hidden;
+}
+.wrap_svg {
+	margin-left: auto;
+	margin-right: auto;
+}
+a.wrap_svg {
+	display: block;
+}
+.wrap_svg svg {
+	width: 100%;
+	height: 100%;
+}
+svg.svg_inline {
+	display: inline; // [viewBox] attribute selector does not work in webkit
+}
+// --- Overlay & Modal --- \\
+// created and added (also destroyed) to DOM via JS
+// opacity applied via JS | transition via CSS
+[data-overlay] {
+	position: fixed;
+	z-index: 900;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: hsla(0,0%,0%,0.8);
+	visibility: hidden; // requires visibility in order to hide animation on initial page load... set to 'visible' via JS class 'ready'
+}
+html.ready [data-overlay] {
+	visibility: visible;
+}
+[data-overlay="active"] {
+	left: 0;
+	animation: animShow 0.4s ease-in-out;
+}
+[data-overlay="inactive"] {
+	left: -200%;
+	animation: animHide 0.4s ease-in-out forwards;
+}
+.overlay_modal {
+	position: absolute;
+	z-index: 901;
+	top: 0;
+	right: 1.6rem;
+	bottom: 0;
+	left: 1.6rem;
+	margin: auto;
+	max-width: 32rem;
+	padding: 0 2rem;
+	height: 28rem;
+	background-color: $hsl_L100;
+	border-radius: 1rem;
+}
+// + internet explorer + \\
+html.ie9 [data-overlay="active"] {
+	display: block;
+}
+html.ie9 [data-overlay="inactive"] {
+	display: none;
+}
+
+
+// ==|== sections =============================================================
+// ============================================================================
+
+// Articles
+// ----------------------------------------------------------------------------
+main {
+	display: table;
+	table-layout: fixed;
+	padding: 4rem 1.6rem;
+	width: 100%;
+	height: 100vh;
+}
+section {
+	display: table-cell;
+	vertical-align: middle;
+}
+div.wrap_logo {
+	margin-bottom: 4rem;
+	width: 10rem;
+	height: 10rem;
+}
+div.wrap_main {
+	margin-bottom: 4rem;
+}
+div.wrap_main svg {
+	fill: $hsl_ash;
+}
+a.wrap_svg {
+	width: 17.6rem;
+	height: 1.9rem;
+}
+a.wrap_svg svg {
+	fill: $hsl_blue;
+}
+a.wrap_svg:hover svg {
+	fill: $hsl_red;
+}
+a.wrap_svg:active svg {
+	fill: lighten($hsl_red, 10%);
+}
