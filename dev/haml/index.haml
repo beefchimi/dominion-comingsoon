@@ -1,7 +1,7 @@
 !!!
 /[if IE 9] <html class="ie9" lang="en">
 <!--[if gt IE 9]><!-->
-%html{:lang => "en"}<>
+%html{:lang => "en", "data-images" => "waiting", "data-overlay" => ""}<>
 	<!--<![endif]-->
 
 	= Haml::Engine.new(File.read("dev/haml/partials/_doc_head.haml")).render
@@ -26,25 +26,17 @@
 						%svg.txt_main.svg_inline{:viewBox => "0 0 679 176"}
 							%use{"xlink:href" => "#txt_main"}
 
-					%aside#mc_embed_signup{"data-container" => "width_386"}
+					%form#mc-embedded-subscribe-form.validate{:action => "//dominioncity.us7.list-manage.com/subscribe/post-json?u=606d7d0b567f59c868c9f077a&amp;id=442e480698&c=?", :method => "get", :name => "mc-embedded-subscribe-form", :novalidate => true, "data-container" => "width_386"}
 
-						%form#mc-embedded-subscribe-form.validate{:action => "//dominioncity.us7.list-manage.com/subscribe/post-json?u=606d7d0b567f59c868c9f077a&amp;id=442e480698&c=?", :method => "get", :name => "mc-embedded-subscribe-form", :novalidate => true}
+						%input#mce-NAME.mce-name{:type => "text", :name => "NAME", :value => "", :placeholder => "Name", :tabindex => "1"}
+						%input#mce-EMAIL.mce-email{:type => "email", :name => "EMAIL", :value => "", :placeholder => "Email", :required => true, :tabindex => "2"}
 
-							%input#mce-NAME.mce-name{:type => "text", :name => "NAME", :value => "", :placeholder => "Name", :tabindex => "1"}
-							%input#mce-EMAIL.mce-email{:type => "email", :name => "EMAIL", :value => "", :placeholder => "Email", :required => true, :tabindex => "2"}
+						#do-not-remove.visuallyhidden
+							%input{:type => "text", :name => "b_606d7d0b567f59c868c9f077a_442e480698", :value => "", :tabindex => "-1"}
 
-							#do-not-remove.visuallyhidden
-								%input{:type => "text", :name => "b_606d7d0b567f59c868c9f077a_442e480698", :value => "", :tabindex => "-1"}
-
-							%button#mc-embedded-subscribe.button{:type => "submit", :value => "Submit", :name => "subscribe", :tabindex => "3"}
-								%svg.txt_submit{:viewBox => "0 0 61 12"}
-									%use{"xlink:href" => "#txt_submit"}
-
-							%aside#overlay{"data-overlay" => "inactive"}
-								#overlay_modal.overlay_modal
-									.wrap_response
-										%h3#mce-response-text
-										%a#close{:href => "#", :title => "Close Window"} Close
+						%button#mc-embedded-subscribe.button{:type => "submit", :value => "Submit", :name => "subscribe", :tabindex => "3"}
+							%svg.txt_submit{:viewBox => "0 0 61 12"}
+								%use{"xlink:href" => "#txt_submit"}
 
 					%h4.visuallyhidden www.dominioncity.ca
 
@@ -52,4 +44,13 @@
 						%svg.txt_link{:viewBox => "0 0 176 19"}
 							%use{"xlink:href" => "#txt_link"}
 
+		%aside#overlay.mce-overlay
+			#overlay_modal.overlay_modal
+				.wrap_response
+					%h3#mce-response-text
+					%a#close.button{:href => "#", :title => "Close Window"} Close
+
+		%img#bg-image.visuallyhidden{:src => "assets/img/bg_map.jpg", :alt => ""}
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_loader.haml")).render
 		= Haml::Engine.new(File.read("dev/haml/partials/_doc_scripts.haml")).render

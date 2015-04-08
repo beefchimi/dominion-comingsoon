@@ -4,11 +4,10 @@ jQuery(document).ready(function($) {
 
 	// Global Variables: Variables requiring a global scope
 	// ----------------------------------------------------------------------------
-	var transitionEvent = whichTransitionEvent(),
-		animationEvent  = whichAnimationEvent(),
-		elHTML          = document.documentElement,
+	var elHTML          = document.documentElement,
 		elBody          = document.body,
-		elOverlay;
+		animationEvent  = whichAnimationEvent(),
+		transitionEvent = whichTransitionEvent();
 
 
 	// Helper: Check when a CSS transition or animation has ended
@@ -52,6 +51,44 @@ jQuery(document).ready(function($) {
 	}
 
 
+	// waitForImages: Wait until images are loaded
+	// ----------------------------------------------------------------------------
+	function waitForImages() {
+
+		// the rest of the code does not apply to IE9, so exit
+		if ( classie.has(elHTML, 'ie9') ) {
+			return;
+		}
+
+		var 	elLoader       = document.getElementById('loader_overlay'),
+			elPreloadImage = document.getElementById('bg-image');
+
+		// listen for the end of <header> fadeIn animation
+		elLoader.addEventListener(transitionEvent, removeLoader);
+
+		function removeLoader() {
+
+			// remove the event listener from the loader
+			elLoader.removeEventListener(transitionEvent, removeLoader);
+
+			// remove any unneeded elements
+			elBody.removeChild(elLoader);
+			elBody.removeChild(elPreloadImage);
+
+			// page is now fully ready to go
+			// elHTML.setAttribute('data-page', 'ready');
+			elHTML.setAttribute('data-overlay', 'hidden');
+
+		}
+
+		// layout Packery after all images have loaded
+		imagesLoaded(elBody, function(instance) {
+			elHTML.setAttribute('data-images', 'loaded');
+		});
+
+	}
+
+
 	// Mailchimp Form Functions
 	// ----------------------------------------------------------------------------
 	function formMailchimp() {
@@ -78,6 +115,8 @@ jQuery(document).ready(function($) {
 
 		$elForm.submit(function(e) {
 
+			console.log('submit');
+
 			if ($elInputEmail.val().length > 0) {
 
 				// we may have added an error class... so let's go ahead and remove it
@@ -97,14 +136,14 @@ jQuery(document).ready(function($) {
 						error: function(jqXHR, textStatus, errorThrown) {
 
 							$elResponse.html(data.msg);
-							$elOverlay.attr('data-overlay', 'active');
+							elHTML.setAttribute('data-overlay', 'visible');
 
 						},
 
 						success: function(data) {
 
 							$elResponse.html(data.msg);
-							$elOverlay.attr('data-overlay', 'active');
+							elHTML.setAttribute('data-overlay', 'visible');
 							// $(this)[0].reset();
 
 						}
@@ -126,7 +165,7 @@ jQuery(document).ready(function($) {
 		// hide signup modal on click outside of signup article
 		$elCloseButton.on('click', function(e) {
 
-			$elOverlay.attr('data-overlay', 'inactive');
+			elHTML.setAttribute('data-overlay', 'hidden');
 
 			e.preventDefault();
 
@@ -137,6 +176,7 @@ jQuery(document).ready(function($) {
 
 	// Initialize Primary Functions
 	// ----------------------------------------------------------------------------
+	waitForImages();
 	formMailchimp();
 
 
