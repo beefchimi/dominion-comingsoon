@@ -312,3 +312,23 @@ a.wrap_svg:hover svg {
 a.wrap_svg:active svg {
 	fill: lighten($hsl_red, 10%);
 }
+h1 {
+	margin-bottom: 2rem;
+	font-size: 3.2rem;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+h2 {
+	font-size: 1.6rem;
+	font-weight: 700;
+	line-height: 1.4;
+}
+h2 a {
+	color: $hsl_blue;
+}
+h2 a:hover {
+	color: $hsl_red;
+}
+h2 a:active {
+	color: darken($hsl_red, 10%);
+}

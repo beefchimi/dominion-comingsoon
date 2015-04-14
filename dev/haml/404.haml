@@ -12,5 +12,17 @@
 
 			%section
 
-				%article{"data-container" => "width_948"}
-					%p It appears the page you are looking for does not exist.
+				%article{"data-container" => "width_680"}
+
+					.wrap_logo.wrap_svg
+						%svg.logo_domcity{:viewBox => "0 0 64 64"}
+							%use{"xlink:href" => "#logo_domcity"}
+
+					%h1 Error 404
+					:plain
+						<h2>You have stumbled upon a page that does not exist. <a href="http://dominionday.ca/" title="Return Home">Go back home.</a></h2>
+
+		%img#bg-image.visuallyhidden{:src => "assets/img/bg_map.jpg", :alt => ""}
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_loader.haml")).render
+		= Haml::Engine.new(File.read("dev/haml/partials/_doc_scripts.haml")).render

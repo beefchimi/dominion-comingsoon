@@ -26,23 +26,7 @@
 						%svg.txt_main.svg_inline{:viewBox => "0 0 679 176"}
 							%use{"xlink:href" => "#txt_main"}
 
-					%form#mc-embedded-subscribe-form.validate{:action => "//dominioncity.us7.list-manage.com/subscribe/post-json?u=606d7d0b567f59c868c9f077a&amp;id=442e480698&c=?", :method => "get", :name => "mc-embedded-subscribe-form", :novalidate => true, "data-container" => "width_386"}
-
-						%input#mce-NAME.mce-name{:type => "text", :name => "NAME", :value => "", :placeholder => "Name", :tabindex => "1"}
-						%input#mce-EMAIL.mce-email{:type => "email", :name => "EMAIL", :value => "", :placeholder => "Email", :required => true, :tabindex => "2"}
-
-						#do-not-remove.visuallyhidden
-							%input{:type => "text", :name => "b_606d7d0b567f59c868c9f077a_442e480698", :value => "", :tabindex => "-1"}
-
-						%button#mc-embedded-subscribe.button{:type => "submit", :value => "Submit", :name => "subscribe", :tabindex => "3"}
-							%svg.txt_submit{:viewBox => "0 0 61 12"}
-								%use{"xlink:href" => "#txt_submit"}
-
-					%h4.visuallyhidden www.dominioncity.ca
-
-					%a.wrap_svg{:href => "http://dominioncity.ca/", :title => "Visit Dominion city .ca"}
-						%svg.txt_link{:viewBox => "0 0 176 19"}
-							%use{"xlink:href" => "#txt_link"}
+					= Haml::Engine.new(File.read("dev/haml/partials/_form_mailchimp.haml")).render
 
 		%aside#overlay.mce-overlay
 			#overlay_modal.overlay_modal
